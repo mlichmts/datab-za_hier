@@ -18,7 +18,7 @@ namespace pojekt
             StreamReader sr = new StreamReader("C:\\ano\\projekt.txt");
             
 
-            while (true)
+            while (true) //nacitanie a ulozenie celeho obsahu do listu obsah
             {
                 string riadok=sr.ReadToEnd();
                 string[] tmp = riadok.Split('\n');
@@ -46,14 +46,14 @@ namespace pojekt
                 }
                 if (vyber == 1)
                 {
-                    foreach (var data in obsah)
+                    foreach (var data in obsah) //vypisanie podla poradia v txt
                     {
                         Console.WriteLine(data);
                     }
                 }
                 else if (vyber == 2)
                 {
-                    foreach (var data in obsah.OrderBy(poradie => poradie.Split('-')[0]))
+                    foreach (var data in obsah.OrderBy(poradie => poradie.Split('-')[0]))//zoradi sa to podla nazvu od a po z
                         Console.WriteLine(data);
                 }
                 else if (vyber == 3)
@@ -62,7 +62,7 @@ namespace pojekt
                     float minCena = float.Parse(Console.ReadLine());
                     Console.WriteLine("zadaj max cenu");
                     float maxCena = float.Parse(Console.ReadLine());
-                    foreach (var data in obsah)
+                    foreach (var data in obsah.OrderBy(poradie => poradie.Split('-')[1]))// zoradenie od najmensej po najvacsiu cenu 
                     {
                         float Cena = float.Parse(data.Split('-')[1]);
                         if (Cena >= minCena && Cena <= maxCena)
@@ -73,7 +73,7 @@ namespace pojekt
                 {
                     Console.WriteLine("zadaj zaner");
                     string zaner = Console.ReadLine();
-                    foreach (var data in obsah)
+                    foreach (var data in obsah.OrderBy(poradie => poradie.Split('-')[2])) // zoradenie podla zanra od a po z
                     {
                         string zaner_vtxt = data.Split('-')[2];
                         if (zaner_vtxt.Contains(zaner))
@@ -86,7 +86,7 @@ namespace pojekt
                     float minhodnotenie = float.Parse(Console.ReadLine());
                     Console.WriteLine("zadaj max hodnotenie");
                     float maxhodnotenie = float.Parse(Console.ReadLine());
-                    foreach (var data in obsah)
+                    foreach (var data in obsah.OrderBy(poradie => poradie.Split('-')[3])) // zoradenie podla hodnotenia od najmensieho 
                     {
                         float hodnotenie = float.Parse(data.Split('-')[3]);
                         if (hodnotenie >= minhodnotenie && hodnotenie <= maxhodnotenie)
