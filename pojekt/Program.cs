@@ -13,16 +13,16 @@ namespace pojekt
     {
         static void Main(string[] args)
         {
-             
+
             List<string> obsah = new List<string>();
             StreamReader sr = new StreamReader("C:\\ano\\projekt.txt");
-            
+
 
             while (true) //nacitanie a ulozenie celeho obsahu do listu obsah
             {
-                string riadok=sr.ReadToEnd();
+                string riadok = sr.ReadToEnd();
                 string[] tmp = riadok.Split('\n');
-                foreach(string item in tmp) 
+                foreach (string item in tmp)
                     obsah.Add(item);
                 break;
             }
@@ -34,7 +34,7 @@ namespace pojekt
                 Console.WriteLine("2 - Názov");
                 Console.WriteLine("3 - Cena");
                 Console.WriteLine("4 - Žáner");
-                Console.WriteLine("5 - Rating");
+                Console.WriteLine("5 - Hodnotenie");
                 Console.WriteLine("6 - Ukončiť");
                 Console.WriteLine("------------------------------------");
 
@@ -71,20 +71,20 @@ namespace pojekt
                 }
                 else if (vyber == 4)
                 {
-                    Console.WriteLine("zadaj zaner");
+                    Console.WriteLine("zadaj žáner");
                     string zaner = Console.ReadLine();
                     foreach (var data in obsah.OrderBy(poradie => poradie.Split('-')[2])) // zoradenie podla zanra od a po z
                     {
                         string zaner_vtxt = data.Split('-')[2];
                         if (zaner_vtxt.Contains(zaner))
                             Console.WriteLine(data);
-                    } 
+                    }
                 }
                 else if (vyber == 5)
                 {
                     Console.WriteLine("zadaj min. hodnotenie");
                     float minhodnotenie = float.Parse(Console.ReadLine());
-                    Console.WriteLine("zadaj max hodnotenie");
+                    Console.WriteLine("zadaj max. hodnotenie");
                     float maxhodnotenie = float.Parse(Console.ReadLine());
                     foreach (var data in obsah.OrderBy(poradie => poradie.Split('-')[3])) // zoradenie podla hodnotenia od najmensieho 
                     {
@@ -93,7 +93,7 @@ namespace pojekt
                             Console.WriteLine(data);
                     }
                 }
-                else Console.WriteLine("zadaj znovu, zle zadany parameter");
+                else Console.WriteLine("Zadaj znovu, zle zadaný parameter");
             }
         }
     }
